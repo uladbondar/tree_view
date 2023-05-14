@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout ${{ github.ref }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
@@ -34,7 +34,7 @@ jobs:
 
       - name: Build Application Code
         env:
-          REACT_APP_API_URL: 'http://localhost:3001/api'
+          REACT_APP_API_URL: '/api'
         run: |
           echo "REACT_APP_API_URL=${REACT_APP_API_URL}" > .env.production.local
           npm run build

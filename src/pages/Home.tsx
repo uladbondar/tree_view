@@ -119,30 +119,30 @@ export const Home = () => {
           width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
         }}
       >
-        <Toolbar />
+        <>
+          <Toolbar />
 
-        {error ? (
-          <Stack>
-            <Typography variant="h6" color="text.secondary">
-              Error when fetching data.
+          {error && (
+            <Stack>
+              <Typography variant="h6" color="text.secondary">
+                Error when fetching data.
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                {JSON.stringify(error)}
+              </Typography>
+            </Stack>
+          )}
+
+          {data && !selectedFile && (
+            <Typography paragraph>
+              Select a file from the left to view its content.
             </Typography>
-            <Typography variant="body1" color="text.secondary">
-              {JSON.stringify(error)}
-            </Typography>
-          </Stack>
-        ) : (
-          ''
-        )}
+          )}
 
-        {!selectedFile && (
-          <Typography paragraph>
-            Select a file from the left to view its content.
-          </Typography>
-        )}
-
-        {selectedFile && (
-          <Typography paragraph>{selectedFile.content}</Typography>
-        )}
+          {data && selectedFile && (
+            <Typography paragraph>{selectedFile.content}</Typography>
+          )}
+        </>
       </Box>
     </Box>
   );
