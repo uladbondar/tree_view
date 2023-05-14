@@ -134,6 +134,12 @@ export const Home = () => {
           ''
         )}
 
+        {!selectedFile && (
+          <Typography paragraph>
+            Select a file from the left to view its content.
+          </Typography>
+        )}
+
         {selectedFile && (
           <Typography paragraph>{selectedFile.content}</Typography>
         )}
