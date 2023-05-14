@@ -6,7 +6,14 @@ import reportWebVitals from './reportWebVitals';
 
 // Note: under normal circumstances, you would not import it in production. It's done here for demo purposes.
 import { worker } from './mocks/browser';
-worker.start();
+worker.start({
+  serviceWorker: {
+    url:
+      process.env.NODE_ENV === 'development'
+        ? '/mockServiceWorker.js'
+        : `${process.env.PUBLIC_URL}/mockServiceWorker.js`,
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
