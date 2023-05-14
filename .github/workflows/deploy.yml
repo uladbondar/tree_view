@@ -1,4 +1,4 @@
-name: Deployment
+name: Deploy
 
 on:
   push:
@@ -34,8 +34,10 @@ jobs:
 
       - name: Build Application Code
         env:
+          PUBLIC_URL: 'https://uladbondar.github.io/tree_view/'
           REACT_APP_API_URL: '/api'
         run: |
+          echo "PUBLIC_URL=${PUBLIC_URL}" > .env.production.local
           echo "REACT_APP_API_URL=${REACT_APP_API_URL}" > .env.production.local
           npm run build
 
